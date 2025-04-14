@@ -1,0 +1,2 @@
+<h1>Para rodar o projeto localmente é necessário criar a venv novamente e instalar os requirements pois a pasta venv foi adicionada no git ignore.</h1>
+<h1>Também é necessário criar um banco APP_TECH juntamente com um usuário APP_TECH e senha APP_TECH.</h1>

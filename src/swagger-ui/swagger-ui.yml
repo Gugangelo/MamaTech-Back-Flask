@@ -1,0 +1,617 @@
+swagger: '2.0'
+info:
+  title: API Documentation
+  version: '1.0'
+tags:
+  - name: Users
+    description: Endpoints related to users
+  - name:   Authenticate
+    description: Endpoints related to authenticate
+  - name: Cancer Patient Forms
+    description: Endpoints related to cancer patient forms
+  - name: Symptoms
+    description: Endpoints related to symptoms
+  - name: Treatments
+    description: Endpoints related to treatments
+  - name: Patient Symptoms
+    description: Endpoints related to patient symptoms
+  - name: Patient Treatments
+    description: Endpoints related to patient treatments
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      summary: List all users
+      responses:
+        '200':
+          description: A list of users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+    post:
+      tags:
+        - Users
+      summary: Create a new user
+      parameters:
+        - in: body
+          name: user
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Bad request
+  /users/{user_id}:
+    get:
+      tags:
+        - Users
+      summary: Retrieve a user by ID
+      parameters:
+        - in: path
+          name: user_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: User found
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          description: User not found
+    put:
+      tags:
+        - Users
+      summary: Update a user by ID
+      parameters:
+        - in: path
+          name: user_id
+          type: string
+          required: true
+        - in: body
+          name: user
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: User updated successfully
+        '404':
+          description: User not found
+    delete:
+      tags:
+        - Users
+      summary: Delete a user by ID
+      parameters:
+        - in: path
+          name: user_id
+          type: string
+          required: true
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
+  /login:
+    post:
+      tags:
+        - Authenticate
+      summary: Login in Sistems
+      parameters:
+        - in: body
+          name: auth
+          schema:
+            $ref: '#/definitions/Login'
+      responses:
+        '201':
+          description: login successfully
+        '400':
+          description: Bad request
+  /user:
+    get:
+      tags:
+        - Authenticate
+      summary: Retrieve a user
+      responses:
+        '200':
+          description: User found
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          description: User not found
+  /symptmoms:
+    get:
+      tags:
+        - Symptoms
+      summary: List all symptoms
+      responses:
+        '200':
+          description: A list of symptoms
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Symptoms'
+    post:
+      tags:
+        - Symptoms
+      summary: Create a new symptom
+      parameters:
+        - in: body
+          name: symptom
+          schema:
+            $ref: '#/definitions/Symptoms'
+      responses:
+        '201':
+          description: Symptom created successfully
+        '400':
+          description: Bad request
+  /symptoms/{symptoms_id}:
+    get:
+      tags:
+        - Symptoms
+      summary: Retrieve a symptom by ID
+      parameters:
+        - in: path
+          name: symptoms_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Symptom found
+          schema:
+            $ref: '#/definitions/Symptoms'
+        '404':
+          description: Symptom not found
+    put:
+      tags:
+        - Symptoms
+      summary: Update a symptom by ID
+      parameters:
+        - in: path
+          name: symptoms_id
+          type: string
+          required: true
+        - in: body
+          name: symptom
+          schema:
+            $ref: '#/definitions/Symptoms'
+      responses:
+        '200':
+          description: Symptom updated successfully
+        '404':
+          description: Symptom not found
+    delete:
+      tags:
+        - Symptoms
+      summary: Delete a symptom by ID
+      parameters:
+        - in: path
+          name: symptoms_id
+          type: string
+          required: true
+      responses:
+        '204':
+          description: Symptom deleted successfully
+        '404':
+          description: Symptom not found
+  /treatments:
+    get:
+      tags:
+        - Treatments
+      summary: List all treatments
+      responses:
+        '200':
+          description: A list of treatments
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Treatments'
+    post:
+      tags:
+        - Treatments
+      summary: Create a new treatment
+      parameters:
+        - in: body
+          name: treatment
+          schema:
+            $ref: '#/definitions/Treatments'
+      responses:
+        '201':
+          description: Treatment created successfully
+        '400':
+          description: Bad request
+  /treatments/{treatment_id}:
+    get:
+      tags:
+        - Treatments
+      summary: Retrieve a treatment by ID
+      parameters:
+        - in: path
+          name: treatment_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Treatment found
+          schema:
+            $ref: '#/definitions/Treatments'
+        '404':
+          description: Treatment not found
+    put:
+      tags:
+        - Treatments
+      summary: Update a treatment by ID
+      parameters:
+        - in: path
+          name: treatment_id
+          type: string
+          required: true
+        - in: body
+          name: treatment
+          schema:
+            $ref: '#/definitions/Treatments'
+      responses:
+        '200':
+          description: Treatment updated successfully
+        '404':
+          description: Treatment not found
+    delete:
+      tags:
+        - Treatments
+      summary: Delete a Treatment by ID
+      parameters:
+        - in: path
+          name: treatment_id
+          type: string
+          required: true
+      responses:
+        '204':
+          description: Treatment deleted successfully
+        '404':
+          description: Treatment not found
+  /patient_symptoms:
+    get:
+      tags:
+        - Patient Symptoms
+      summary: List all patients symptoms
+      responses:
+        '200':
+          description: A list of patient symptoms
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Patient_Symptoms'
+    post:
+      tags:
+        - Patient Symptoms
+      summary: Create a new patient symptom
+      parameters:
+        - in: body
+          name: patient_symptoms
+          schema:
+            $ref: '#/definitions/Patient_Symptoms'
+      responses:
+        '201':
+          description: Patient Symptom created successfully
+        '400':
+          description: Bad request
+  /patient_symptoms/{patient_symptoms_id}:
+    get:
+      tags:
+        - Patient Symptoms
+      summary: Retrieve a patient symptom by ID
+      parameters:
+        - in: path
+          name: patient_symptoms_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Patient Symptom found
+          schema:
+            $ref: '#/definitions/Patient_Symptoms'
+        '404':
+          description: Patient Symptom not found
+    put:
+      tags:
+        - Patient Symptoms
+      summary: Update a patient symptoms by ID
+      parameters:
+        - in: path
+          name: patient_symptoms_id
+          type: string
+          required: true
+        - in: body
+          name: patient_symptoms
+          schema:
+            $ref: '#/definitions/Patient_Symptoms'
+      responses:
+        '200':
+          description: Patient Symptom updated successfully
+        '404':
+          description: Patient Symptom not found
+    delete:
+      tags:
+        - Patient Symptoms
+      summary: Delete a Patient Symptom by ID
+      parameters:
+        - in: path
+          name: patient_symptoms_id
+          type: string
+          required: true
+      responses:
+        '204':
+          description: Patient Symptom deleted successfully
+        '404':
+          description: Patient Symptom not found
+  /patient_treatment:
+    get:
+      tags:
+        - Patient Treatments
+      summary: List all patients treatments
+      responses:
+        '200':
+          description: A list of patient treatments
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Patient_Treatment'
+    post:
+      tags:
+        - Patient Treatments
+      summary: Create a new patient treatments
+      parameters:
+        - in: body
+          name: patient_treatments
+          schema:
+            $ref: '#/definitions/Patient_Treatment'
+      responses:
+        '201':
+          description: Patient Treatment created successfully
+        '400':
+          description: Bad request
+  /patient_treatment/{patient_treatment_id}:
+    get:
+      tags:
+        - Patient Treatments
+      summary: Retrieve a patient treatment by ID
+      parameters:
+        - in: path
+          name: patient_treatment_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Patient Treatment found
+          schema:
+            $ref: '#/definitions/Patient_Treatment'
+        '404':
+          description: Patient Treatment not found
+    put:
+      tags:
+        - Patient Treatments
+      summary: Update a patient treatment by ID
+      parameters:
+        - in: path
+          name: patient_treatment_id
+          type: string
+          required: true
+        - in: body
+          name: patient_treatment
+          schema:
+            $ref: '#/definitions/Patient_Treatment'
+      responses:
+        '200':
+          description: Patient Treatment updated successfully
+        '404':
+          description: Patient Treatment not found
+    delete:
+      tags:
+        - Patient Treatments
+      summary: Delete a Patient Treatment by ID
+      parameters:
+        - in: path
+          name: patient_treatment_id
+          type: string
+          required: true
+      responses:
+        '204':
+          description: Patient Treatment deleted successfully
+        '404':
+          description: Patient Treatment not found
+  /cancer_patient_forms:
+    get:
+      tags:
+        - Cancer Patient Forms
+      summary: List all cancer patient forms
+      responses:
+        '200':
+          description: A list of cancer patient forms
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Form_Cancer_Patient'
+    post:
+      tags:
+        - Cancer Patient Forms
+      summary: Create a new cancer patient form
+      parameters:
+        - in: body
+          name: form
+          schema:
+            $ref: '#/definitions/Form_Cancer_Patient'
+      responses:
+        '201':
+          description: Form created successfully
+        '400':
+          description: Bad request
+  /cancer_patient_forms/{form_id}:
+    get:
+      tags:
+        - Cancer Patient Forms
+      summary: Retrieve a cancer patient form by ID
+      parameters:
+        - in: path
+          name: form_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Form found
+          schema:
+            $ref: '#/definitions/Form_Cancer_Patient'
+        '404':
+          description: Form not found
+    put:
+      tags:
+        - Cancer Patient Forms
+      summary: Update a cancer patient form by ID
+      parameters:
+        - in: path
+          name: form_id
+          type: string
+          required: true
+        - in: body
+          name: form
+          schema:
+            $ref: '#/definitions/Form_Cancer_Patient'
+      responses:
+        '200':
+          description: Form updated successfully
+        '404':
+          description: Form not found
+    delete:
+      tags:
+        - Cancer Patient Forms
+      summary: Delete a cancer patient form by ID
+      parameters:
+        - in: path
+          name: form_id
+          type: string
+          required: true
+      responses:
+        '204':
+          description: Form deleted successfully
+        '404':
+          description: Form not found
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+      name:
+        type: string
+      password:
+        type: string
+      date_of_birth:
+        type: string
+        format: date
+      email:
+        type: string
+      phone_number:
+        type: string
+      genre:
+        type: string
+      marital_status:
+        type: string
+      education_level:
+        type: string
+      weight:
+        type: string
+      waist_circumference:
+        type: string
+      height:
+        type: string
+      cancer_patient:
+        type: boolean
+  Login:
+    type: object
+    properties:
+      email:
+          type: string
+      password:
+          type: string
+  Symptoms:
+    type: object
+    properties:
+      id:
+          type: string
+      created_at:
+          type: string
+          format: date-time
+      updated_at:
+          type: string
+          format: date-time
+      symptoms:
+          type: string
+  Treatments:
+    type: object
+    properties:
+      id:
+          type: string
+      created_at:
+          type: string
+          format: date-time
+      updated_at:
+          type: string
+          format: date-time
+      treatment:
+          type: string
+  Patient_Symptoms:
+    type: object
+    properties:
+      id:
+          type: string
+      created_at:
+          type: string
+          format: date-time
+      updated_at:
+          type: string
+          format: date-time
+      user_id:
+          type: string
+      cancer_form_id:
+          type: string
+      symptoms_id:
+          type: string
+  Patient_Treatment:
+    type: object
+    properties:
+      id:
+          type: string
+      created_at:
+          type: string
+          format: date-time
+      updated_at:
+          type: string
+          format: date-time
+      user_id:
+          type: string
+      cancer_form_id:
+          type: string
+      treatment_id:
+          type: string
+  Form_Cancer_Patient:
+    type: object
+    properties:
+      id:
+        type: string
+      patient_id:
+        type: string
+      form_date:
+        type: string
+        format: date
+      diagnosis:
+        type: string
+      treatment_plan:
+        type: string
+      notes:
+        type: string

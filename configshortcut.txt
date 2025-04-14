@@ -1,0 +1,14 @@
+-- criação da venv
+python -m venv venv
+-- ativar venv 
+venv\Scripts\Activate
+-- instalar requirements
+pip install -r requirements.txt
+-- desistalar sqlalchemy 
+pip uninstall flask_sqlalchemy 
+-- instalar novamente sqlalchemy
+pip install flask_sqlalchemy 
+
+-----------------------------
+usuario bd = apptechapi
+senha bd = 3a2e4711377ba29126ff0652af34eab1
